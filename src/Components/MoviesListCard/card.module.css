@@ -1,0 +1,24 @@
+.card{
+    width: 17%;
+    margin-top: 20px;
+    margin-right: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.56);
+    border-radius: 5px;
+
+}
+.card a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+}
+.card p{
+
+}
+.inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}

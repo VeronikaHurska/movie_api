@@ -1,0 +1,7 @@
+.listOnPage{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 40px;
+    justify-content: center;
+}
