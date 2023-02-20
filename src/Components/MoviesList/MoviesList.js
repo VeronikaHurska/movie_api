@@ -16,10 +16,11 @@ const MoviesList = () => {
     const [query, setQuery] = useSearchParams({page:'1'});
 
     useEffect(() => {
-        dispatch(moviesActions.getAll({page:query.get('page')}))
+        const resp = dispatch(moviesActions.getAll({page:query.get('page')}));
+        console.log("resp",resp);
     }, [dispatch,query]);
-    console.log(movies);
 
+    console.log(movies);
     return (
         <div>
             <div className={css.listOnPage}>
