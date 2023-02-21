@@ -20,18 +20,17 @@ const MoviesList = () => {
 
 
     let genresToFilter = genresService.genresToRequest(selectedGenres);
-    console.log(genresToFilter);
-
 
     useEffect(() => {
         dispatch(moviesActions.getAll({with_genres:genresToFilter,page: query.get('page')}));
     }, [dispatch, query, genresToFilter]);
 
 
-
+    console.log(movies);
     return (
         <div>
             <div className={css.GenresList}>
+                <p>GENRES</p>
                 <Genres selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
             </div>
             <div className={css.listOnPage}>
@@ -40,8 +39,8 @@ const MoviesList = () => {
                 }
             </div>
             <div>
-                <button onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>prev</button>
-                <button onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next</button>
+                <button disabled={+query.get('page') - 1 === 0} className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Previous page</button>
+                <button className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next page</button>
             </div>
         </div>
     );

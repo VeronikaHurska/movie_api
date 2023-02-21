@@ -1,7 +1,9 @@
-.genreTags{
-display: flex;
+.genreTags {
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
     color: white;
+    padding-left: 200px;
+    margin-top: 40px;
 }

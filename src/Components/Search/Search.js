@@ -7,6 +7,7 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {useSearchParams} from "react-router-dom";
 
 import css from './search.module.css'
+import {Genres} from "../Genres/Genres";
 
 const Search = () => {
 
@@ -32,11 +33,12 @@ const Search = () => {
         <div>
             <div className={css.Form}>
                 <form onSubmit={handleSubmit(search)}>
-                    <input placeholder={"Search movie"} {...register('search')}/>
-                    <button>Search</button>
+                    <div className={css.inputWrapper}>
+                        <input placeholder={"Search movie"} {...register('search')} />
+                    </div>
+                    <button className={css.button}>Search</button>
                 </form>
             </div>
-
             <div className={css.List}>
                 {
                     results && results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)

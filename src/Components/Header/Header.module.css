@@ -1,20 +1,22 @@
 .Header{
     height: 60px;
-    background-color: #39455a;
+    background-color: #09041b;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: fixed;
     width: 100%;
-    box-shadow: 0px 1px 5px black;
+    box-shadow: 0px 1px 5px #371028;
 }
 .Header a{
     text-decoration: none;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
+
 }
 .Header a:hover{
     text-decoration: underline;
+    color: orange;
 }
 .Header a[class="active"]{
     text-decoration: underline;

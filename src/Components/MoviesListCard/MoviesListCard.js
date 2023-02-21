@@ -17,8 +17,8 @@ const MoviesListCard = ({movie}) => {
     const dispatch = useDispatch();
     return (
         <div className={css.card}>
-            <Link to={'/movies/' + id.toString()} state={movie}
-                  onClick={() => dispatch(moviesActions.setSelectedMovie(movie))}>
+            <Link to={'/movies/' + id.toString()}
+                  onClick={() => dispatch(moviesActions.setSelectedMovie(id))}>
                 <div className={css.inner}>
                     <PosterPreview movie={movie}/>
                     <p>{original_title}</p>

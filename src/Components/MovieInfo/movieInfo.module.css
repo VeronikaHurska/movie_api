@@ -1,0 +1,48 @@
+.Container{
+    padding-top: 100px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+.Poster{
+    margin: 20px 20px 100px 30px;
+}
+.Title{
+    color: orange;
+    font-weight: bold;
+    font-size: 30px;
+}
+.Info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.Field{
+    margin: 0;
+    color: orange;
+    font-size: 20px;
+}
+.FieldBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 250px;
+    align-items: center;
+}
+.Overview{
+    font-size: 20px;
+    padding: 20px;
+}
+.badgeBlock{
+    display: flex;
+    margin-bottom: 5px;
+}
+.badgeinfo{
+    display: flex;
+    flex-direction: column;
+}
+.InfoPoster{
+    display: flex;
+    flex-direction: row;
+}
