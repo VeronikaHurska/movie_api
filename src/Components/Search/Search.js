@@ -10,7 +10,7 @@ import css from './search.module.css'
 
 const Search = () => {
 
-    const [query, setQuery] = useSearchParams({ page: '1'});
+    const [query, setQuery] = useSearchParams({page: '1'});
 
     const {handleSubmit, register} = useForm();
     const dispatch = useDispatch();
@@ -30,18 +30,20 @@ const Search = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(search)}>
-                <input placeholder={"Search movie"} {...register('search')}/>
-                <button>Search</button>
-            </form>
-            <button onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>prev</button>
-            <button onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next</button>
+            <div className={css.Form}>
+                <form onSubmit={handleSubmit(search)}>
+                    <input placeholder={"Search movie"} {...register('search')}/>
+                    <button>Search</button>
+                </form>
+            </div>
+
             <div className={css.List}>
                 {
                     results && results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                 }
             </div>
-
+            <button onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>prev</button>
+            <button onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next</button>
         </div>
     );
 };

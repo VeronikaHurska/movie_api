@@ -12,9 +12,9 @@ const initialState = {
 
 const getAll = createAsyncThunk(
     'moviesSlice/getAll',
-    async ({page}, thunkAPI) => {
+    async ({page,with_genres}, thunkAPI) => {
         try {
-            const {data} = await moviesService.getAll(page);
+            const {data} = await moviesService.getAll(page,with_genres);
             return data.results;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
@@ -58,6 +58,7 @@ const moviesSlice = createSlice({
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload
+                state.selectGenres = action.payload
             })
             .addCase(getById.fulfilled, (state, action) => {
                 state.selectedMovie = action.payload

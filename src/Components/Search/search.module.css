@@ -3,6 +3,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 40px;
-
+    padding-top: 20px;
+}
+.Form{
+    padding-top: 100px;
 }

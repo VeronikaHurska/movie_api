@@ -1,7 +1,12 @@
-.listOnPage{
+.listOnPage {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 40px;
     justify-content: center;
+    padding-top: 100px;
 }
+.GenresList{
+    padding-top: 100px;
+}
+
+

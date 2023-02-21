@@ -9,6 +9,7 @@ const Header = () => {
 
     return (
         <div className={css.Header}>
+            <i className="fa-light fa-film"></i>
             <Link to={'/movies'}>Movies</Link>
             <Link to={'/search'}>Search</Link>
             <UserInfo/>
