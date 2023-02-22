@@ -11,6 +11,7 @@
     color: orange;
     font-weight: bold;
     font-size: 30px;
+    margin: 0;
 }
 .Info{
     display: flex;
@@ -33,6 +34,7 @@
 .Overview{
     font-size: 20px;
     padding: 20px;
+    color: var( --text-info);
 }
 .badgeBlock{
     display: flex;
@@ -45,4 +47,7 @@
 .InfoPoster{
     display: flex;
     flex-direction: row;
+}
+.FieldValue{
+    color: var( --text-info);
 }

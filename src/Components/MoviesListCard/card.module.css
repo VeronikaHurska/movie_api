@@ -4,24 +4,26 @@
     margin-right: 8px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(146, 144, 144, 0.45);
+    /*background-color: rgba(146, 144, 144, 0.45);*/
+    background-color: var(--card-movie-bg);
     border-radius: 5px;
-
+    height: 420px;
 }
 
 .card:hover {
-    background-color: gray;
+    box-shadow: var(--card-movie-bg-hover) ;
 }
 
 .card a {
     text-decoration: none;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .card p {
     color: white;
     font-weight: bold;
+    margin: 20px 0px  20px 0px;
 }
 
 .inner {
@@ -29,4 +31,5 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    justify-content: space-between;
 }

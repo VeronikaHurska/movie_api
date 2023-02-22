@@ -30,7 +30,6 @@ const MoviesList = () => {
     return (
         <div>
             <div className={css.GenresList}>
-                <p>GENRES</p>
                 <Genres selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
             </div>
             <div className={css.listOnPage}>

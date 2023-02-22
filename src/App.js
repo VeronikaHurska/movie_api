@@ -6,10 +6,13 @@ import {MoviesPage} from "./pages/MoviesPage/MoviesPage";
 import {MovieDetailsPage} from "./pages/MovieDetailsPage/MovieDetailsPage";
 import './App.css'
 import {SearchPage} from "./pages/SearchPage";
+import {useTheme} from "@mui/material";
 
 function App() {
+    const {theme, setTheme} = useTheme();
     return (
         <div className={"App"}>
+
             <Routes>
                 <Route path={'/'} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'movies'}/>}/>

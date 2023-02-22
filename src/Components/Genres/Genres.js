@@ -21,6 +21,8 @@ const Genres = ({setSelectedGenres, selectedGenres}) => {
     const addGenres = (genre) => {
         setSelectedGenres([...selectedGenres, genre])
         genres.filter(eg => eg.id !== genre.id)
+        console.log("gg",genres);
+        dispatch(genresAction.getAllGenres())
     }
 
     const removeGenres = genre => {
@@ -36,7 +38,7 @@ const Genres = ({setSelectedGenres, selectedGenres}) => {
             <div className={css.genreTags}>
                 {
                     selectedGenres?.map((genre) => <Chip key={genre.id} label={genre.name} onDelete={() => removeGenres(genre)}
-                    style={{backgroundColor:"white", padding: 10, margin: 2}}
+                    style={{backgroundColor:"lightgray", padding: 10, margin: 2}}
                     />)
                 }
                 {

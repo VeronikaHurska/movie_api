@@ -1,7 +1,9 @@
 .App {
   text-align: center;
-  background-image: url(images/dark.jpg);
+  background-image: var(--app-bg);
   /*background-color: #3a455c;*/
+  background-size: contain;
+  background-position: bottom right;
 }
 ::-webkit-scrollbar {
   display: none;

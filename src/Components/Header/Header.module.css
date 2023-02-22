@@ -1,24 +1,45 @@
-.Header{
+.Header {
     height: 60px;
-    background-color: #09041b;
+    background-color: var(--header-bg-color);
+    background-image: var(--header-bg-color-img);
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: fixed;
     width: 100%;
-    box-shadow: 0px 1px 5px #371028;
+    box-shadow: var(--header-shadow);
+    z-index: 2;
 }
-.Header a{
+
+.Header a {
     text-decoration: none;
-    color: white;
+    color: var(--link-color);
     font-size: 20px;
+    font-weight: bold;
 
 }
-.Header a:hover{
+
+.Header a:hover {
     text-decoration: underline;
-    color: orange;
 }
-.Header a[class="active"]{
+
+.Header a[class="active"] {
     text-decoration: underline;
-    color: orange;
+    color: var(--link-color-hover);
+}
+
+.button{
+    color: var(--button-header);
+    background-color: orange;
+    width: 100px;
+    border-radius: 6px;
+    border: 2px solid orange;
+    font-weight: bold;
+    font-size: 15px;
+    height: 40px;
+
+}
+.button:hover{
+    text-decoration: underline;
 }
