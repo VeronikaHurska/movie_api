@@ -51,3 +51,7 @@
 .FieldValue{
     color: var( --text-info);
 }
+.video{
+    margin-bottom: 30px;
+    margin-top: 0;
+}

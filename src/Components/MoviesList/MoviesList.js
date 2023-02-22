@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-
 import {useSearchParams} from "react-router-dom";
 
 
 import {moviesActions} from "../../redux/slices/movieSlice";
-import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
-import css from './MovieList.module.css'
+import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {Genres} from "../Genres/Genres";
+
 import {genresService} from "../../services/genresService";
+import css from './MovieList.module.css'
 
 const MoviesList = () => {
 

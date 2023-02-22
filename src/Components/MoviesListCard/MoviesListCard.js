@@ -1,14 +1,14 @@
 import React from 'react';
-
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
+import {StarsRating} from "../StarsRating/StarsRating";
 
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 
-import css from "./card.module.css"
-
-import {useDispatch} from "react-redux";
 import {moviesActions} from "../../redux/slices/movieSlice";
-import {StarsRating} from "../StarsRating/StarsRating";
+
+import css from "./card.module.css"
 
 
 const MoviesListCard = ({movie}) => {
@@ -22,9 +22,9 @@ const MoviesListCard = ({movie}) => {
             <Link to={'/movies/' + id.toString()}
                   onClick={() => dispatch(moviesActions.setSelectedMovie(id))}>
                 <div className={css.inner}>
-                    <div className={css.PosterTitle}>
+                    <div >
                         <PosterPreview movie={movie}/>
-                        <p className={css.name}>{original_title}</p>
+                        <p >{original_title}</p>
                     </div>
                     <StarsRating rating={vote_average}/>
                 </div>

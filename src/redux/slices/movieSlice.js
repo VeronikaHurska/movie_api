@@ -8,6 +8,8 @@ const initialState = {
     nextPage: null,
     selectedMovie: null,
     searchMovies: [],
+    loading: null,
+    videos:{}
 };
 
 const getAll = createAsyncThunk(
@@ -46,6 +48,20 @@ const search = createAsyncThunk(
     }
 );
 
+const getVideos = createAsyncThunk(
+    'moviesSlice/getVideos',
+    async (id, thunkAPI) => {
+        try {
+            const {data} = await moviesService.getVideos(id);
+            const state = thunkAPI.getState();
+            console.log(state);
+            return data
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+);
+
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
@@ -65,6 +81,12 @@ const moviesSlice = createSlice({
             .addCase(search.fulfilled, (state, action) => {
                 state.searchMovies = action.payload
             })
+            .addCase(getById.pending, (state, action) => {
+                state.loading = true
+            })
+            .addCase(getVideos.fulfilled,(state, action)=>{
+                state.videos = action.payload.results
+            })
 
 });
 
@@ -74,7 +96,8 @@ const moviesActions = {
     getAll,
     setSelectedMovie,
     getById,
-    search
+    search,
+    getVideos
 }
 
 export {
