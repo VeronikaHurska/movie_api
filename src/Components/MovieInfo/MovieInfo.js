@@ -84,19 +84,22 @@ const MovieInfo = () => {
                             <p className={css.Field}>Description</p>
                             <div className={css.Overview}>{overview}</div>
                         </div>
+                        <div className={css.video}>
+                            {videos && videos.length > 0 && (
+                                <><p className={css.Title}>TRAILER</p>
+                                    <iframe
+
+                                        width="640"
+                                        height="360"
+                                        src={`http://www.youtube.com/embed/${videos[0].key}?autoplay=1&origin=http://example.com`}
+                                    />
+                                </>
+                            )}
+                        </div>
                     </div>
+
                 </div>
-                <div className={css.video}>
-                    {videos && videos.length > 0 && (
-                        <><p className={css.Title}>TRAILER</p>
-                            <iframe
-                                width="640"
-                                height="360"
-                                src={`http://www.youtube.com/embed/${videos[0].key}?autoplay=1&origin=http://example.com`}
-                            />
-                        </>
-                    )}
-                </div>
+
             </div>
         </div>
     );

@@ -7,6 +7,7 @@ import {MovieDetailsPage} from "./pages/MovieDetailsPage/MovieDetailsPage";
 import './App.css'
 import {SearchPage} from "./pages/SearchPage";
 import {useTheme} from "@mui/material";
+import {NotFoundPage} from "./pages/NotFoundPage";
 
 function App() {
     const {theme, setTheme} = useTheme();
@@ -19,6 +20,7 @@ function App() {
                     <Route path={'movies'} element={<MoviesPage/>}/>
                     <Route path={'movies/:idMovie'} element={<MovieDetailsPage/>}/>
                     <Route path={'search'} element={<SearchPage/>}/>
+                    <Route path={'*'} element={<NotFoundPage/>}/>
                 </Route>
             </Routes>
         </div>

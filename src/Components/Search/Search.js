@@ -1,33 +1,38 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
-import {useSearchParams} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {moviesActions} from "../../redux/slices/movieSlice";
 
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 
+
 import css from './search.module.css'
+
 
 const Search = () => {
 
-    const [query, setQuery] = useSearchParams({page: '1'});
-
     const {handleSubmit, register} = useForm();
     const dispatch = useDispatch();
-
     const {searchMovies} = useSelector(state => state.movies);
 
-    const search = async (nameToSearch) => {
-        console.log("name", nameToSearch.search);
-        await dispatch(moviesActions.search(nameToSearch.search, {page: query.get('page')}));
+    const [query, setQuery] = useSearchParams({page: '1'});
+
+
+
+    const search = (nameToSearch) => {
+        localStorage.setItem("movieName", nameToSearch.search)
+        setQuery({page: '1'})
     }
 
+    const movieName = localStorage.getItem("movieName");
+    console.log(movieName);
 
-    console.log("sm", searchMovies);
+    useEffect(() => {
+        dispatch(moviesActions.search({query: movieName, page: query.get('page')}));
+    }, [movieName, dispatch, query]);
 
-    const {page, results} = searchMovies;
-    console.log(page);
 
     return (
         <div>
@@ -39,13 +44,15 @@ const Search = () => {
                     <button className={css.button}>Search</button>
                 </form>
             </div>
+
             <div className={css.List}>
                 {
-                    results && results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    searchMovies && searchMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                 }
             </div>
-            <button onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>prev</button>
-            <button onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next</button>
+            <button  className={css.button} disabled={+query.get('page') - 1 === 0} onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>PREVIOUS PAGE
+            </button>
+            <button className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>NEXT PAGE</button>
         </div>
     );
 };

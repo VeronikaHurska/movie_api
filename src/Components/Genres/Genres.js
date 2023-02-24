@@ -18,10 +18,9 @@ const Genres = ({setSelectedGenres, selectedGenres}) => {
         dispatch(genresAction.getAllGenres());
     }, [dispatch]);
 
+
     const addGenres = (genre) => {
         setSelectedGenres([...selectedGenres, genre])
-        genres.filter(eg => eg.id !== genre.id)
-        console.log("gg",genres);
         dispatch(genresAction.getAllGenres())
     }
 
@@ -31,26 +30,37 @@ const Genres = ({setSelectedGenres, selectedGenres}) => {
         )
         moviesActions.getAll(selectedGenres)
     }
+    console.log("sg",selectedGenres);
 
 
+    const dis = (id) => {
+        for (const genre of selectedGenres) {
+            if (id===genre.id) {
+                return true;
+            }
+        }
+
+        return false
+    }
     return (
 
-            <div className={css.genreTags}>
-                {
-                    selectedGenres?.map((genre) => <Chip key={genre.id} label={genre.name} onDelete={() => removeGenres(genre)}
-                    style={{backgroundColor:"lightgray", padding: 10, margin: 2}}
-                    />)
-                }
-                {
-                    genres.map(genre => {
-                        return <Chip onClick={() => addGenres(genre)}
-                                     key={genre.id}
-                                     label={genre.name}
-                                     style={{backgroundColor: 'orange', padding: 10, margin: 2}}
-                        />
-                    })
-                }
-            </div>
+        <div className={css.genreTags}>
+            {
+                selectedGenres?.map((genre) => <Chip key={genre.id} label={genre.name} onDelete={() => removeGenres(genre)}
+                                                     style={{backgroundColor: "lightgray", padding: 10, margin: 2}}
+                />)
+            }
+            {
+                genres.map(genre => {
+                    return <Chip onClick={() => addGenres(genre)}
+                                 key={genre.id}
+                                 label={genre.name}
+                                 style={{backgroundColor: 'orange', padding: 10, margin: 2}}
+                                 disabled={dis(genre.id)}
+                    />
+                })
+            }
+        </div>
 
     );
 };

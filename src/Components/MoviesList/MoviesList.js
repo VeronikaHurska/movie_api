@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useSearchParams} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
 
 
 import {moviesActions} from "../../redux/slices/movieSlice";
@@ -15,14 +15,20 @@ const MoviesList = () => {
 
     const {movies} = useSelector(state => state.movies);
     const dispatch = useDispatch();
-    const [query, setQuery] = useSearchParams({page: '1',with_genres:''});
+    const [query, setQuery] = useSearchParams({page: '1'});
     const [selectedGenres, setSelectedGenres] = useState([]);
+    const location = useLocation();
+
+
+    if (location.pathname === '/movies') {
+        localStorage.setItem("movieName", '')
+    }
 
 
     let genresToFilter = genresService.genresToRequest(selectedGenres);
 
     useEffect(() => {
-        dispatch(moviesActions.getAll({with_genres:genresToFilter,page: query.get('page')}));
+        dispatch(moviesActions.getAll({with_genres: genresToFilter, page: query.get('page')}));
     }, [dispatch, query, genresToFilter]);
 
 
@@ -38,7 +44,9 @@ const MoviesList = () => {
                 }
             </div>
             <div>
-                <button disabled={+query.get('page') - 1 === 0} className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Previous page</button>
+                <button disabled={+query.get('page') - 1 === 0} className={css.button}
+                        onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Previous page
+                </button>
                 <button className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next page</button>
             </div>
         </div>

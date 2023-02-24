@@ -38,10 +38,10 @@ const getById = createAsyncThunk(
 
 const search = createAsyncThunk(
     'moviesSlice/search',
-    async (query, {page}, thunkAPI) => {
+    async ( {query,page}, thunkAPI) => {
         try {
             const {data} = await moviesService.search(query, page);
-            return data
+            return data.results
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
         }
