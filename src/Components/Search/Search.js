@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
-import {useLocation, useSearchParams} from "react-router-dom";
+import { useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {moviesActions} from "../../redux/slices/movieSlice";
@@ -19,7 +19,7 @@ const Search = () => {
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
-
+const {total_pages} = searchMovies;
 
     const search = (nameToSearch) => {
         localStorage.setItem("movieName", nameToSearch.search)
@@ -33,7 +33,7 @@ const Search = () => {
         dispatch(moviesActions.search({query: movieName, page: query.get('page')}));
     }, [movieName, dispatch, query]);
 
-
+    console.log("sm",searchMovies);
     return (
         <div>
             <div className={css.Form}>
@@ -47,12 +47,12 @@ const Search = () => {
 
             <div className={css.List}>
                 {
-                    searchMovies && searchMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    searchMovies.results && searchMovies.results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                 }
             </div>
             <button  className={css.button} disabled={+query.get('page') - 1 === 0} onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>PREVIOUS PAGE
             </button>
-            <button className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>NEXT PAGE</button>
+            <button className={css.button}  disabled={+query.get('page')  === total_pages} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>NEXT PAGE</button>
         </div>
     );
 };

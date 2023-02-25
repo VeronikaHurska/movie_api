@@ -6,11 +6,10 @@ import {MoviesPage} from "./pages/MoviesPage/MoviesPage";
 import {MovieDetailsPage} from "./pages/MovieDetailsPage/MovieDetailsPage";
 import './App.css'
 import {SearchPage} from "./pages/SearchPage";
-import {useTheme} from "@mui/material";
 import {NotFoundPage} from "./pages/NotFoundPage";
 
 function App() {
-    const {theme, setTheme} = useTheme();
+
     return (
         <div className={"App"}>
 

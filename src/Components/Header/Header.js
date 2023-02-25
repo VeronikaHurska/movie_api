@@ -9,7 +9,9 @@ import {useTheme} from "../../hooks/useTheme";
 const Header = () => {
     const {theme, setTheme} = useTheme();
     const navigate = useNavigate();
+
     const switchTheme = (theme) => {
+        localStorage.setItem("app-theme","dark")
         if (theme === 'light') {
             setTheme('dark')
         } else {

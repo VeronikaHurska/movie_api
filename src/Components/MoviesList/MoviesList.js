@@ -23,6 +23,7 @@ const MoviesList = () => {
     if (location.pathname === '/movies') {
         localStorage.setItem("movieName", '')
     }
+    console.log(selectedGenres);
 
 
     let genresToFilter = genresService.genresToRequest(selectedGenres);
@@ -31,8 +32,7 @@ const MoviesList = () => {
         dispatch(moviesActions.getAll({with_genres: genresToFilter, page: query.get('page')}));
     }, [dispatch, query, genresToFilter]);
 
-
-    console.log(movies);
+    const {total_pages} = movies;
     return (
         <div>
             <div className={css.GenresList}>
@@ -40,14 +40,16 @@ const MoviesList = () => {
             </div>
             <div className={css.listOnPage}>
                 {
-                    movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    movies.results && movies.results.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                 }
             </div>
             <div>
                 <button disabled={+query.get('page') - 1 === 0} className={css.button}
                         onClick={() => setQuery(query => ({page: +query.get('page') - 1}))}>Previous page
                 </button>
-                <button className={css.button} onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next page</button>
+                <button className={css.button} disabled={+query.get('page') === total_pages}
+                        onClick={() => setQuery(query => ({page: +query.get('page') + 1}))}>next page
+                </button>
             </div>
         </div>
     );

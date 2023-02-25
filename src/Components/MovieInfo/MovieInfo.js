@@ -40,7 +40,7 @@ const MovieInfo = () => {
 
     return (
         <div className={css.Container}>
-            <div className={css.Class}>
+            <div >
 
                 <p className={css.Title}>{original_title.toUpperCase()}</p>
                 {tagline && <p className={css.FieldValue}>"{tagline}"</p>}
@@ -54,7 +54,7 @@ const MovieInfo = () => {
                             />
                         </div>
                     </div>
-                    <div className={css.badgeinfo}>
+                    <div >
                         <div className={css.badgeBlock}>
                             {
                                 genres.map(genre => <GenreBadge key={genre.id} genre={genre}/>)
@@ -99,7 +99,6 @@ const MovieInfo = () => {
                     </div>
 
                 </div>
-
             </div>
         </div>
     );
